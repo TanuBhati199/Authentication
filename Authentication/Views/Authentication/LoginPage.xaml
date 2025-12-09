@@ -1,0 +1,706 @@
+﻿<Window
+  x:Class="CaseManagementSystem.Views.Authentication.LoginPage"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+  xmlns:helpers="clr-namespace:CaseManagementSystem.Helpers"
+  Loaded="UserControl_Loaded"
+  Background="#F5F5F5"
+  Title="Case Management System - Login"
+  Height="600"
+  Width="1000"
+  WindowStartupLocation="CenterScreen"
+  WindowStyle="None"
+  AllowsTransparency="True"
+  ResizeMode="NoResize"
+>
+  <!-- ENTER KEY EXECUTES LOGIN COMMAND -->
+  <Window.InputBindings>
+    <KeyBinding Key="Enter" Command="{Binding LoginCommand}" />
+  </Window.InputBindings>
+
+  <Window.Resources>
+    <Style x:Key="LabelStyle" TargetType="TextBlock">
+      <Setter Property="FontSize" Value="13" />
+      <Setter Property="FontWeight" Value="SemiBold" />
+      <Setter Property="Foreground" Value="#424242" />
+      <Setter Property="Margin" Value="0,0,0,8" />
+    </Style>
+
+    <Style x:Key="InputBoxStyle" TargetType="telerik:RadWatermarkTextBox">
+      <Setter Property="Height" Value="44" />
+      <Setter Property="FontSize" Value="14" />
+      <Setter Property="Padding" Value="12,0" />
+      <Setter Property="BorderBrush" Value="#E0E0E0" />
+      <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <Style x:Key="PasswordBoxStyle" TargetType="telerik:RadPasswordBox">
+      <Setter Property="Height" Value="44" />
+      <Setter Property="FontSize" Value="14" />
+      <Setter Property="Padding" Value="12,0" />
+      <Setter Property="BorderBrush" Value="#E0E0E0" />
+      <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <Style x:Key="LoginButtonStyle" TargetType="telerik:RadButton">
+      <Setter Property="Height" Value="48" />
+      <Setter Property="FontSize" Value="15" />
+      <Setter Property="FontWeight" Value="SemiBold" />
+      <Setter Property="Background" Value="#0078D7" />
+      <Setter Property="Foreground" Value="White" />
+      <Setter Property="CornerRadius" Value="6" />
+      <Setter Property="Cursor" Value="Hand" />
+    </Style>
+  </Window.Resources>
+
+  <Border Background="White" CornerRadius="16" BorderThickness="1" BorderBrush="#E0E0E0">
+    <Border.Effect>
+      <DropShadowEffect Color="Black" Opacity="0.15" BlurRadius="30" ShadowDepth="0" />
+    </Border.Effect>
+
+    <Grid>
+      <!-- Custom Title Bar -->
+      <Border
+        Height="50"
+        VerticalAlignment="Top"
+        Background="#0078D7"
+        CornerRadius="16,16,0,0"
+        MouseLeftButtonDown="TitleBar_MouseLeftButtonDown"
+      >
+        <Grid>
+          <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="25,0,0,0">
+            <Viewbox Width="24" Height="24" Margin="0,0,10,0">
+              <Canvas Width="24" Height="24">
+                <Path
+                  Data="M12,2L2,7V17.5C2,19.43 3.57,21 5.5,21C7.43,21 9,19.43 9,17.5V11H15V17.5C15,19.43 16.57,21 18.5,21C20.43,21 22,19.43 22,17.5V7L12,2Z"
+                  Fill="White"
+                />
+              </Canvas>
+            </Viewbox>
+            <TextBlock
+              Text="Case Management System"
+              FontSize="15"
+              FontWeight="SemiBold"
+              Foreground="White"
+              VerticalAlignment="Center"
+            />
+          </StackPanel>
+
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <!--<telerik:RadButton
+              Content="−"
+              Width="45"
+              Height="50"
+              Background="Transparent"
+              Foreground="White"
+              FontSize="20"
+              BorderThickness="0"
+              Click="MinimizeButton_Click"
+              Cursor="Hand"
+            >
+              <telerik:RadButton.Style>
+                <Style TargetType="telerik:RadButton">
+                  <Setter Property="Background" Value="Transparent" />
+                  <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                      <Setter Property="Background" Value="#1976D2" />
+                    </Trigger>
+                  </Style.Triggers>
+                </Style>
+              </telerik:RadButton.Style>
+            </telerik:RadButton>-->
+
+            <telerik:RadButton
+              Content="✕"
+              Width="45"
+              Height="50"
+              Background="Transparent"
+              Foreground="White"
+              FontSize="18"
+              BorderThickness="0"
+              Click="CloseButton_Click"
+              Cursor="Hand"
+            >
+              <telerik:RadButton.Style>
+                <Style TargetType="telerik:RadButton">
+                  <Setter Property="Background" Value="Transparent" />
+                  <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                      <Setter Property="Background" Value="#E81123" />
+                    </Trigger>
+                  </Style.Triggers>
+                </Style>
+              </telerik:RadButton.Style>
+            </telerik:RadButton>
+          </StackPanel>
+        </Grid>
+      </Border>
+
+      <!-- Main Content -->
+      <Grid Margin="0,50,0,0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- LEFT PANEL - Login Form -->
+        <Border Grid.Column="0" Padding="60,50" Background="White">
+          <StackPanel VerticalAlignment="Center" MaxWidth="380">
+            <!-- Logo/Icon -->
+
+            <!-- Title -->
+            <!-- Logo/Icon -->
+            <!--<Viewbox Width="80" Height="80">
+              <Image Source="pack://application:,,,/Resources/Images/CMS-logo2.png" Height="170" />
+
+              -->
+            <!--<Canvas Width="100" Height="100">
+                <Ellipse Width="100" Height="100" Fill="#0078D7" Opacity="0.1" />
+                <Path Data="M50,30 L50,50" Stroke="#0078D7" StrokeThickness="8" />
+                <Ellipse Width="12" Height="12" Canvas.Left="44" Canvas.Top="58" Fill="#0078D7" />
+                <Ellipse
+                  Width="70"
+                  Height="40"
+                  Canvas.Left="15"
+                  Canvas.Top="25"
+                  Stroke="#0078D7"
+                  StrokeThickness="8"
+                  Fill="Transparent"
+                />
+              </Canvas>-->
+            <!--
+            </Viewbox>-->
+
+            <!-- Title -->
+            <TextBlock
+              Text="Welcome Back"
+              FontSize="32"
+              FontWeight="Bold"
+              Foreground="#212121"
+              HorizontalAlignment="Center"
+              Margin="0,0,0,8"
+            />
+
+            <TextBlock
+              Text="Sign in to continue to your account"
+              FontSize="14"
+              Foreground="#757575"
+              HorizontalAlignment="Center"
+              Margin="0,0,0,40"
+            />
+
+            <!-- USERNAME -->
+            <StackPanel Margin="0,0,0,20">
+              <TextBlock Text="Username" Style="{StaticResource LabelStyle}" />
+              <telerik:RadWatermarkTextBox
+                x:Name="UsernameBox"
+                TabIndex="0"
+                WatermarkContent="Enter your username"
+                Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                Style="{StaticResource InputBoxStyle}"
+              />
+            </StackPanel>
+
+            <!-- PASSWORD -->
+            <StackPanel Margin="0,0,0,10">
+              <TextBlock Text="Password" Style="{StaticResource LabelStyle}" />
+              <telerik:RadPasswordBox
+                x:Name="PasswordBox"
+                TabIndex="1"
+                WatermarkContent="Enter your password"
+                Style="{StaticResource PasswordBoxStyle}"
+                helpers:PasswordHelper.BoundPassword="{Binding Password, Mode=TwoWay}"
+              >
+                <telerik:RadPasswordBox.InputBindings>
+                  <KeyBinding Key="Enter" Command="{Binding LoginCommand}" />
+                </telerik:RadPasswordBox.InputBindings>
+              </telerik:RadPasswordBox>
+            </StackPanel>
+
+            <!-- REMEMBER ME + FORGOT PASSWORD -->
+            <Grid Margin="0,0,0,25">
+              <CheckBox
+                TabIndex="2"
+                Content="Remember me"
+                IsChecked="{Binding RememberMe}"
+                VerticalAlignment="Center"
+                FontSize="13"
+                Foreground="#424242"
+              />
+
+              <TextBlock
+                Text="Forgot Password?"
+                Cursor="Hand"
+                Foreground="#0078D7"
+                FontSize="13"
+                FontWeight="SemiBold"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                MouseLeftButtonDown="ForgotPassword_Click"
+              >
+                <TextBlock.Style>
+                  <Style TargetType="{x:Type TextBlock}">
+                    <Style.Triggers>
+                      <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="TextDecorations" Value="Underline" />
+                      </Trigger>
+                    </Style.Triggers>
+                  </Style>
+                </TextBlock.Style>
+              </TextBlock>
+            </Grid>
+
+            <!-- LOGIN BUTTON -->
+            <telerik:RadButton
+              Content="SIGN IN"
+              TabIndex="3"
+              Command="{Binding LoginCommand}"
+              Style="{StaticResource LoginButtonStyle}"
+              Margin="0,0,0,20"
+            />
+
+            <!-- ERROR MESSAGE -->
+            <Border Background="#FFEBEE" Padding="12" CornerRadius="6" Margin="0,0,0,20">
+              <Border.Style>
+                <Style TargetType="{x:Type Border}">
+                  <Setter Property="Visibility" Value="Visible" />
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding ErrorMessage}" Value="{x:Null}">
+                      <Setter Property="Visibility" Value="Collapsed" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding ErrorMessage}" Value="">
+                      <Setter Property="Visibility" Value="Collapsed" />
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </Border.Style>
+              <StackPanel Orientation="Horizontal">
+                <TextBlock
+                  Text="⚠"
+                  FontSize="16"
+                  Foreground="#D32F2F"
+                  Margin="0,0,8,0"
+                  VerticalAlignment="Center"
+                />
+                <TextBlock
+                  Text="{Binding ErrorMessage}"
+                  Foreground="#D32F2F"
+                  FontSize="13"
+                  FontWeight="SemiBold"
+                  TextWrapping="Wrap"
+                  VerticalAlignment="Center"
+                />
+              </StackPanel>
+            </Border>
+
+            <!-- DIVIDER -->
+            <Grid Margin="0,0,0,20">
+              <Border Height="1" Background="#E0E0E0" />
+              <TextBlock
+                Text="OR"
+                Background="White"
+                Padding="10,0"
+                FontSize="12"
+                Foreground="#9E9E9E"
+                HorizontalAlignment="Center"
+              />
+            </Grid>
+
+            <!-- SIGNUP LINK -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+              <TextBlock
+                Text="Don't have an account?"
+                FontSize="14"
+                Foreground="#757575"
+                Margin="0,0,5,0"
+              />
+              <TextBlock
+                Text="Sign Up"
+                FontSize="14"
+                FontWeight="Bold"
+                Foreground="#0078D7"
+                Cursor="Hand"
+                MouseLeftButtonDown="Signup_Click"
+                Height="23"
+              >
+                <TextBlock.Style>
+                  <Style TargetType="{x:Type TextBlock}">
+                    <Style.Triggers>
+                      <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="TextDecorations" Value="Underline" />
+                      </Trigger>
+                    </Style.Triggers>
+                  </Style>
+                </TextBlock.Style>
+              </TextBlock>
+            </StackPanel>
+          </StackPanel>
+        </Border>
+
+        <!-- RIGHT PANEL - Image/Branding -->
+        <Border Grid.Column="1" Background="#0078D7" CornerRadius="0,0,16,0">
+          <Grid>
+            <!-- Gradient Overlay -->
+            <Border>
+              <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                  <GradientStop Color="#1976D2" Offset="0" />
+                  <GradientStop Color="#0078D7" Offset="0.5" />
+                  <GradientStop Color="#0288D1" Offset="1" />
+                </LinearGradientBrush>
+              </Border.Background>
+            </Border>
+
+            <!-- Pattern Background -->
+            <Border Opacity="0.05">
+              <Border.Background>
+                <DrawingBrush TileMode="Tile" Viewport="0,0,50,50" ViewportUnits="Absolute">
+                  <DrawingBrush.Drawing>
+                    <GeometryDrawing Brush="White">
+                      <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,0,50,50" />
+                      </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                  </DrawingBrush.Drawing>
+                </DrawingBrush>
+              </Border.Background>
+            </Border>
+
+            <!-- Content -->
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="40">
+              <!-- Illustration -->
+
+              <!-- Text Content -->
+              <!-- Illustration -->
+
+              <!-- Text Content -->
+              <!-- Illustration -->
+
+              <!-- Text Content -->
+              <!-- Illustration -->
+              <Viewbox Width="280" Height="280">
+                <Canvas Width="300" Height="300">
+                  <!-- Document Icon -->
+                  <Path
+                    Data="M80,50 L220,50 L220,250 L80,250 Z M160,50 L160,100 L220,100"
+                    Stroke="White"
+                    StrokeThickness="8"
+                    Fill="Transparent"
+                    Opacity="0.9"
+                  />
+
+                  <!-- Lines -->
+                  <Line
+                    X1="100"
+                    Y1="130"
+                    X2="200"
+                    Y2="130"
+                    Stroke="White"
+                    StrokeThickness="6"
+                    Opacity="0.7"
+                  />
+                  <Line
+                    X1="100"
+                    Y1="160"
+                    X2="180"
+                    Y2="160"
+                    Stroke="White"
+                    StrokeThickness="6"
+                    Opacity="0.7"
+                  />
+                  <Line
+                    X1="100"
+                    Y1="190"
+                    X2="190"
+                    Y2="190"
+                    Stroke="White"
+                    StrokeThickness="6"
+                    Opacity="0.7"
+                  />
+                  <Line
+                    X1="100"
+                    Y1="220"
+                    X2="170"
+                    Y2="220"
+                    Stroke="White"
+                    StrokeThickness="6"
+                    Opacity="0.7"
+                  />
+                </Canvas>
+              </Viewbox>
+
+              <!-- Text Content -->
+              <TextBlock
+                Text="Case Management "
+                FontSize="32"
+                FontWeight="Bold"
+                Foreground="White"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,10"
+              />
+
+              <TextBlock
+                Text="System🔍"
+                FontSize="32"
+                FontWeight="Bold"
+                Foreground="White"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,20"
+              />
+
+              <TextBlock
+                Text="Efficiently manage cases, track progress, and collaborate"
+                FontSize="15"
+                Foreground="White"
+                HorizontalAlignment="Center"
+                Opacity="0.9"
+                Margin="0,0,0,5"
+                TextWrapping="Wrap"
+                TextAlignment="Center"
+              />
+
+              <TextBlock
+                Text="with your team in one unified platform."
+                FontSize="15"
+                Foreground="White"
+                HorizontalAlignment="Center"
+                Opacity="0.9"
+                TextWrapping="Wrap"
+                TextAlignment="Center"
+              />
+
+              <!-- Features List -->
+              <!--<StackPanel Margin="0,40,0,0" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+                  <Ellipse
+                    Width="8"
+                    Height="8"
+                    Fill="White"
+                    VerticalAlignment="Center"
+                    Margin="0,0,10,0"
+                  />
+                  <TextBlock
+                    Text="Real-time case tracking and updates"
+                    Foreground="White"
+                    FontSize="14"
+                    Opacity="0.9"
+                  />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+                  <Ellipse
+                    Width="8"
+                    Height="8"
+                    Fill="White"
+                    VerticalAlignment="Center"
+                    Margin="0,0,10,0"
+                  />
+                  <TextBlock
+                    Text="Secure document management"
+                    Foreground="White"
+                    FontSize="14"
+                    Opacity="0.9"
+                  />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                  <Ellipse
+                    Width="8"
+                    Height="8"
+                    Fill="White"
+                    VerticalAlignment="Center"
+                    Margin="0,0,10,0"
+                  />
+                  <TextBlock
+                    Text="Comprehensive reporting and analytics"
+                    Foreground="White"
+                    FontSize="14"
+                    Opacity="0.9"
+                  />
+                </StackPanel>
+              </StackPanel>-->
+            </StackPanel>
+          </Grid>
+        </Border>
+      </Grid>
+    </Grid>
+  </Border>
+</Window>
+<!--<Window
+  x:Class="CaseManagementSystem.Views.Authentication.LoginPage"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+  xmlns:helpers="clr-namespace:CaseManagementSystem.Helpers"
+  xmlns:local="clr-namespace:CaseManagementSystem.Views.Authentication"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  mc:Ignorable="d"
+  Loaded="UserControl_Loaded"
+  d:DesignHeight="500"
+  d:DesignWidth="800"
+  Title="Login"
+  Height="500"
+  Width="800"
+  WindowStartupLocation="CenterScreen"
+>
+ 
+  <Window.InputBindings>
+    <KeyBinding Key="Enter" Command="{Binding LoginCommand}" />
+  </Window.InputBindings>
+
+  <Grid Background="#F4F4F6">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+
+ 
+    <Border
+      Grid.Column="0"
+      Width="422"
+      Padding="30"
+      Background="White"
+      CornerRadius="12"
+      HorizontalAlignment="Left"
+      VerticalAlignment="Center"
+      Grid.ColumnSpan="2"
+      Margin="42,0,0,0"
+      Height="Auto"
+    >
+      <Border.Effect>
+        <DropShadowEffect
+          Color="Black"
+          Direction="270"
+          ShadowDepth="5"
+          Opacity="0.3"
+          BlurRadius="10"
+        />
+      </Border.Effect>
+
+      <StackPanel>
+      
+        <TextBlock
+          Text="LOGIN"
+          FontSize="28"
+          FontWeight="Bold"
+          Foreground="#0078D7"
+          HorizontalAlignment="Center"
+          Margin="0,0,0,30"
+        />
+
+        <StackPanel Margin="0,0,0,15">
+          <TextBlock Text="Username" FontWeight="SemiBold" Margin="0,0,0,5" />
+
+          <telerik:RadWatermarkTextBox
+            x:Name="UsernameBox"
+            TabIndex="0"
+            WatermarkContent="Enter username"
+            Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+            Height="38"
+            Padding="10"
+            BorderBrush="#D0D0D0"
+            BorderThickness="1"
+            FontSize="14"
+          />
+        </StackPanel>
+
+        <StackPanel Margin="0,0,0,15">
+          <TextBlock Text="Password" FontWeight="SemiBold" Margin="0,0,0,5" />
+
+          <telerik:RadPasswordBox
+            x:Name="PasswordBox"
+            TabIndex="1"
+            Height="38"
+            Padding="10"
+            WatermarkContent="Enter password"
+            helpers:PasswordHelper.BoundPassword="{Binding Password, Mode=TwoWay}"
+          >
+            <telerik:RadPasswordBox.Style>
+              <Style TargetType="telerik:RadPasswordBox">
+                <Setter Property="BorderBrush" Value="#D0D0D0" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Style.Triggers>
+                  <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="#0078D7" />
+                  </Trigger>
+                  <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="#0078D7" />
+                  </Trigger>
+                </Style.Triggers>
+              </Style>
+            </telerik:RadPasswordBox.Style>
+
+            <telerik:RadPasswordBox.InputBindings>
+              <KeyBinding Key="Enter" Command="{Binding LoginCommand}" />
+            </telerik:RadPasswordBox.InputBindings>
+          </telerik:RadPasswordBox>
+        </StackPanel>
+
+        <Grid Margin="0,0,0,20">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
+
+          <CheckBox
+            TabIndex="2"
+            Content="Remember Me"
+            IsChecked="{Binding RememberMe}"
+            VerticalAlignment="Center"
+          />
+
+          <TextBlock
+            Grid.Column="1"
+            Text="Forgot Password?"
+            Cursor="Hand"
+            Foreground="#0078D7"
+            VerticalAlignment="Center"
+            TextDecorations="Underline"
+            Margin="10,0,0,0"
+            MouseLeftButtonDown="ForgotPassword_Click"
+          />
+        </Grid>
+
+        <telerik:RadButton
+          Content="Login"
+          TabIndex="3"
+          Height="45"
+          Margin="0,0,0,10"
+          Background="#0078D7"
+          Foreground="White"
+          FontWeight="Bold"
+          Command="{Binding LoginCommand}"
+          HorizontalAlignment="Stretch"
+          ClickMode="Press"
+        />
+
+        <TextBlock
+          Text="{Binding ErrorMessage}"
+          Foreground="Red"
+          FontWeight="SemiBold"
+          TextWrapping="Wrap"
+          Margin="0,10,0,0"
+        />
+
+        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="14">
+                    Don't have an account?
+                    <Hyperlink
+            Click="Signup_Click"
+            Foreground="#0078D7"
+            FontWeight="Bold"
+            Cursor="Hand"
+            >Sign up</Hyperlink
+          >
+        </TextBlock>
+      </StackPanel>
+    </Border>
+
+    <Border Grid.Column="1" CornerRadius="0,12,12,0" ClipToBounds="True">
+      <Image
+        Source="/Resources/Images/CMS-logo.png"
+        Stretch="UniformToFill"
+        Margin="35,39,36,101"
+      />
+    </Border>
+  </Grid>
+</Window>-->

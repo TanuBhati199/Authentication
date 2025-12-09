@@ -1,0 +1,29 @@
+﻿<Window
+  x:Class="CaseManagementSystem.Views.Dashboards.AnalystDashboard"
+  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:local="clr-namespace:CaseManagementSystem.Views.Dashboards"
+  Title="Analyst Dashboard"
+  WindowStartupLocation="CenterScreen"
+  ResizeMode="CanResize"
+  WindowState="Maximized"
+>
+  <Grid Background="#F4F4F6" Margin="10">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
+      <!-- Header -->
+      <TextBlock
+        Text="Analyst Dashboard"
+        FontSize="28"
+        FontWeight="Bold"
+        Foreground="#2D2D2D"
+        HorizontalAlignment="Center"
+      />
+
+      <!-- TextBox with Watermark -->
+      <telerik:RadWatermarkTextBox Width="250" Height="30" />
+    </StackPanel>
+  </Grid>
+</Window>

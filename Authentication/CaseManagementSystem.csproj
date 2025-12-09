@@ -1,0 +1,350 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\CMS-logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Images\CMS-logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Cases\" />
+    <Folder Include="Views\Evidence\" />
+    <Folder Include="Views\Reports\" />
+    <Folder Include="Views\Users\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="MaterialDesignColors" Version="5.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
+    <PackageReference Include="telerik.ui.for.wpf.60.xaml" Version="2024.4.1111" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Telerik.Documents.SpreadsheetStreaming">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Documents.SpreadsheetStreaming.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Pivot.Core">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Pivot.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Pivot.DataProviders.Adomd">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Pivot.DataProviders.Adomd.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Pivot.DataProviders.Queryable">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Pivot.DataProviders.Queryable.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Pivot.DataProviders.Xmla">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Pivot.DataProviders.Xmla.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Cloud">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Cloud.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Cloud.Controls">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Cloud.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries\WPF60\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Chart">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Chart.Direct2D">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.Chart.Direct2D.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Chart.Skia">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.Chart.Skia.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.ConversationalUI">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.ConversationalUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries\WPF60\Telerik.Windows.Controls.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataServices">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.DataServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataServices50">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF462\Telerik.Windows.Controls.DataServices50.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataServices60">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF462\Telerik.Windows.Controls.DataServices60.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataVisualization">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Diagrams">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.Diagrams.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Diagrams.Extensions">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.Diagrams.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Diagrams.Ribbon">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.Diagrams.Ribbon.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Docking">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.EntityFramework">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF462\Telerik.Windows.Controls.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.EntityFramework60">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF462\Telerik.Windows.Controls.EntityFramework60.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.EntityFrameworkCore">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Expressions">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.Expressions.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.FileDialogs">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.FileDialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.FixedDocumentViewers">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.FixedDocumentViewers.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.FixedDocumentViewersUI">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.FixedDocumentViewersUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GanttView">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.GanttView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView.Export">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.GridView.Export.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView.SpreadsheetStreamingExport">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.GridView.SpreadsheetStreamingExport.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.ImageEditor">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.ImageEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries\WPF60\Telerik.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Media">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries\WPF60\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Pivot">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.Pivot.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.PivotFieldList">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.PivotFieldList.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.RibbonView">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.RibbonView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.RichTextBox">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.RichTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.RichTextBoxUI">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF462\Telerik.Windows.Controls.RichTextBoxUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.ScheduleView">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.ScheduleView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Spreadsheet">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.Spreadsheet.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.SpreadsheetUI">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.SpreadsheetUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.SyntaxEditor">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.SyntaxEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.VirtualGrid">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Controls.VirtualGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries\WPF60\Telerik.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Diagrams.Core">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Diagrams.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF462\Telerik.Windows.Documents.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.CMapUtils">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Documents.CMapUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Core">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Documents.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.DrawingML">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Documents.DrawingML.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Fixed">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Documents.Fixed.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Documents.Flow.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow.FormatProviders.Doc">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Documents.Flow.FormatProviders.Doc.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow.FormatProviders.Pdf">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Documents.Flow.FormatProviders.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.Html">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF462\Telerik.Windows.Documents.FormatProviders.Html.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.MsRichTextBoxXaml">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF462\Telerik.Windows.Documents.FormatProviders.MsRichTextBoxXaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.OpenXml">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF462\Telerik.Windows.Documents.FormatProviders.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.Pdf">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF462\Telerik.Windows.Documents.FormatProviders.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.Rtf">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF462\Telerik.Windows.Documents.FormatProviders.Rtf.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.Xaml">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF462\Telerik.Windows.Documents.FormatProviders.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Proofing">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Documents.Proofing.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Proofing.DataGrid">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Documents.Proofing.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Proofing.Dictionaries.En-US">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF462\Telerik.Windows.Documents.Proofing.Dictionaries.En-US.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Proofing.RadGridView">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Documents.Proofing.RadGridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Documents.Spreadsheet.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.Xls">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Documents.Spreadsheet.FormatProviders.Xls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.MediaFoundation">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.MediaFoundation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.PersistenceFramework">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.PersistenceFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Scheduling.Core">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Scheduling.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.SyntaxEditor.Core">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.SyntaxEditor.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Crystal">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Crystal.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Expression_Dark">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Expression_Dark.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Fluent">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Fluent.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Green">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Green.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Material">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Material.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Office2013">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Office2013.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Office2016">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Office2016.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Office2016Touch">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Office2016Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Office2019">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Office2019.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Office_Black">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Office_Black.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Office_Blue">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Office_Blue.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Office_Silver">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Office_Silver.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Summer">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Summer.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Transparent">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Transparent.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Vista">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Vista.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.VisualStudio2013">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.VisualStudio2013.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.VisualStudio2019">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.VisualStudio2019.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Windows11">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Windows11.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Windows7">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Windows7.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Windows8">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Windows8.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Windows8Touch">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Themes.Windows8Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Zip">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Zip.Extensions">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WPF 2024 Q4\Binaries.NoXaml\WPF60\Telerik.Windows.Zip.Extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>
